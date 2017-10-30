@@ -15,5 +15,6 @@
     <body>
         <h1>Hello World!</h1>
         <div>${info}</div>
+        <div>${error}</div>
     </body>
 </html>
