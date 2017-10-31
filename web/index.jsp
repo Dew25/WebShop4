@@ -16,5 +16,7 @@
         <h1>Hello World!</h1>
         <div>${info}</div>
         <div>${error}</div>
+        <a href="/WebShop4/controller?page=login">login</a><br>
+        <a href="/WebShop4/controller?page=logout">logout</a>
     </body>
 </html>

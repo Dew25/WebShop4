@@ -53,10 +53,10 @@ public class Product implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
+    } 
 
     public Long getPrice() {
-        return price;
+        return price/100;
     }
 
     public void setPrice(Long price) {

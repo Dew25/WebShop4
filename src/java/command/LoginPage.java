@@ -5,6 +5,8 @@
  */
 package command;
 
+import entity.Product;
+import java.util.List;
 import java.util.ResourceBundle;
 import resource.SessionRequestContent;
 
@@ -12,16 +14,13 @@ import resource.SessionRequestContent;
  *
  * @author jvm
  */
-public class EmptyPage implements CurrentPage{
-
-    public EmptyPage() {
-    }
+public class LoginPage implements CurrentPage{
+        
 
     @Override
     public String execute(SessionRequestContent sessionRequestContent) {
         ResourceBundle resourceBundle = ResourceBundle.getBundle("resource.config");
-        String page = resourceBundle.getString("page.index");
+        String page = resourceBundle.getString("page.login");
         return page;
     }
-    
 }

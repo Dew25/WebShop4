@@ -5,6 +5,7 @@
  */
 package command;
 
+import entity.User;
 import java.util.ResourceBundle;
 import resource.SessionRequestContent;
 
@@ -12,13 +13,11 @@ import resource.SessionRequestContent;
  *
  * @author jvm
  */
-public class EmptyPage implements CurrentPage{
-
-    public EmptyPage() {
-    }
+public class LogoutPage implements CurrentPage{
 
     @Override
     public String execute(SessionRequestContent sessionRequestContent) {
+        sessionRequestContent.sessionLogout();
         ResourceBundle resourceBundle = ResourceBundle.getBundle("resource.config");
         String page = resourceBundle.getString("page.index");
         return page;

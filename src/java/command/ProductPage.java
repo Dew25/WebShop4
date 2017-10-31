@@ -6,6 +6,7 @@
 package command;
 
 import entity.Product;
+import entity.User;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -43,7 +44,12 @@ public class ProductPage implements CurrentPage {
         sessionRequetContent.setRequestAttributes("products", products);
         ResourceBundle resourceBundle = ResourceBundle.getBundle("resource.config");
         String page = resourceBundle.getString("page.product");
+        User regUser = (User) sessionRequetContent.getSessionAtributeValue("regUser");
+        if(regUser == null || !regUser.getLogin().equals("admin")){
+            page = resourceBundle.getString("page.login"); 
+        }
         return page;
+        
     }
     
 }

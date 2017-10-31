@@ -34,6 +34,7 @@ public class User implements Serializable {
     private String login;
     @Size(min=3)
     private String password;
+    private String salts;
     @JoinColumn(unique = true)
     private Customer customer;
     
@@ -43,6 +44,13 @@ public class User implements Serializable {
     public User(String login, String password) {
         this.login = login;
         this.password = password;
+    }
+
+    public User(String login, String password, String salts, Customer customer) {
+        this.login = login;
+        this.password = password;
+        this.salts = salts;
+        this.customer = customer;
     }
 
     public String getLogin() {
@@ -114,6 +122,14 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "user{" + "id=" + id + ", login=" + login + ", password=" + password + ", customer=" + customer.toString() + '}';
+    }
+
+    public String getSalts() {
+        return salts;
+    }
+
+    public void setSalts(String salts) {
+        this.salts = salts;
     }
     
     

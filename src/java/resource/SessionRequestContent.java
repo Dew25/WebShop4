@@ -21,11 +21,13 @@ public class SessionRequestContent {
     private HashMap<String,Object> requestAttributes = new HashMap<>();
     private HashMap<String,String[]> requestParameters= new HashMap<>();
     private HashMap<String,Object> sessionAttributes= new HashMap<>();
+    private HttpServletRequest request;
 
     public SessionRequestContent() {
     }
         
     public void extractValues(HttpServletRequest request){
+        this.request=request;
         Enumeration attributeNames=request.getAttributeNames();
         while(attributeNames.hasMoreElements()){
             String attrName=(String) attributeNames.nextElement();
@@ -64,28 +66,29 @@ public class SessionRequestContent {
     }
 
     public List<String> getRequestParameterValues(String parameterName) {
-        if(requestParameters.containsKey(parameterName)){
-            List<String> requestParameter=Arrays.asList(requestParameters.get(parameterName));
-            return requestParameter;
-        }
-        return null;
+//        if(requestParameters.containsKey(parameterName)){
+//            List<String> requestParameter=Arrays.asList(requestParameters.get(parameterName));
+//            return requestParameter;
+//        }
+//        return null;
+        return Arrays.asList(this.request.getParameter(parameterName));
     }
     
     public String getRequestParameterValue(String parameterName) {
-        if(requestParameters.containsKey(parameterName)){
-            List<String> requestParameter = Arrays.asList(requestParameters.get(parameterName));
-            return requestParameter.get(0);
-        }
-        return null;
-        
+//        if(requestParameters.containsKey(parameterName)){
+//            List<String> requestParameter = Arrays.asList(requestParameters.get(parameterName));
+//            return requestParameter.get(0);
+//        }
+        return (String) this.request.getParameter(parameterName);
     }
     
     public Object getSessionAtributeValue(String attributeName) {
-        Object sessionAttr = null;
-        if(sessionAttributes.containsKey(attributeName)){
-            sessionAttr=sessionAttributes.get(attributeName);
-        }
-        return sessionAttr;
+//        Object sessionAttr = null;
+//        if(sessionAttributes.containsKey(attributeName)){
+//            sessionAttr=sessionAttributes.get(attributeName);
+//        }
+//        return sessionAttr;
+        return this.request.getSession(false).getAttribute(attributeName);
     }
 
     public void setRequestAttributes(String name,Object value) {
@@ -94,6 +97,11 @@ public class SessionRequestContent {
 
     public void setSessionAttributes(String name,Object value) {
         this.sessionAttributes.put(name, value);
+    }
+    public void sessionLogout(){
+        if(this.request.getSession(false) != null){
+            this.request.getSession(false).invalidate();
+        }
     }
     
 }

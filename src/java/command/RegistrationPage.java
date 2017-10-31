@@ -5,6 +5,7 @@
  */
 package command;
 
+import classis.NewUser;
 import java.util.ResourceBundle;
 import resource.SessionRequestContent;
 
@@ -12,15 +13,15 @@ import resource.SessionRequestContent;
  *
  * @author jvm
  */
-public class EmptyPage implements CurrentPage{
+public class RegistrationPage implements CurrentPage{
 
-    public EmptyPage() {
+    public RegistrationPage() {
     }
 
     @Override
     public String execute(SessionRequestContent sessionRequestContent) {
         ResourceBundle resourceBundle = ResourceBundle.getBundle("resource.config");
-        String page = resourceBundle.getString("page.index");
+        String page = resourceBundle.getString("page.registration");
         return page;
     }
     

@@ -25,12 +25,12 @@ import session.ProductFacade;
 @WebServlet(name = "Controller", loadOnStartup = 1, urlPatterns = {"/controller"})
 public class Controller extends HttpServlet {
 //@EJB private ProductFacade productFacade;
-    @Override
-    public void init() throws ServletException {
-        ResourceBundle resourceBundle = ResourceBundle.getBundle("resource.config");
-        String key1 =resourceBundle.getString("key1");
-        getServletContext().setAttribute("info", "Сработал метод init(). key1="+key1);
-    }
+//    @Override
+//    public void init() throws ServletException {
+//        ResourceBundle resourceBundle = ResourceBundle.getBundle("resource.config");
+//        String key1 =resourceBundle.getString("key1");
+//        getServletContext().setAttribute("info", "Сработал метод init(). key1="+key1);
+//    }
 
     
     /**

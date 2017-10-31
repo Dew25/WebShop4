@@ -14,13 +14,14 @@
     </head>
     <body>
         <h1>Страница продуктов!</h1>
+        <a href="/WebShop4/controller?page=logout">logout</a>
         <div>${info}</div>
         <div>${error}</div>
         Наши продукты:
         <ul>
             <c:forEach var="product" items="${products}">
                 <li>
-                    ${product.name}, по ценe ${product.price/100} EUR - ${product.quantity} шт.
+                    ${product.name}, по ценe ${product.price} EUR - ${product.quantity} шт.
                 </li>
             </c:forEach>
         </ul>
